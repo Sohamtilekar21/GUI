@@ -1,0 +1,157 @@
+from tkinter import *
+
+root=Tk()
+root.title("Marklist")
+root.geometry("750x600")
+
+m=StringVar()
+m1=StringVar()
+m2=StringVar()
+m3=StringVar()
+m4=StringVar()
+m5=StringVar()
+
+def check():
+    res=(e4.get())
+    res=str(res)
+    res=res.upper()
+    if res=="A":
+        a=10*5
+        m.set(a)
+    elif res=="B":
+        a=9*5
+        m.set(a)
+    elif res=="C":
+        a=8*5
+        m.set(a)
+    elif res=="D":
+        a=5*5
+        m.set(a)
+    else:
+        a=0
+        m.set(a)
+
+
+    res1=e5.get()
+    res1=str(res1)
+    res1=res1.upper()
+    if res1=="A":
+        a1=10*4
+        m1.set(a1)
+    elif res1=="B":
+        a1=9*4
+        m1.set(a1)
+    elif res1=="C":
+        a1=8*4
+        m1.set(a1)
+    elif res1=="D":
+        a1=5*4
+        m1.set(a1)
+    else:
+        a1=0
+        m1.set(a1)
+
+    res2=e6.get()
+    res2=str(res2)
+    res2=res2.upper()
+    if res2=="A":
+        a2=10*4
+        m2.set(a2)
+    elif res2=="B":
+        a2=9*4
+        m2.set(a2)
+    elif res2=="C":
+        a2=8*4
+        m2.set(a2)
+    elif res2=="D":
+        a2=5*4
+        m2.set(a2)
+    else:
+        a2=0
+        m2.set(a2)
+        
+    res3=e7.get()
+    res3=str(res3)
+    res3=res3.upper()
+    if res3=="A":
+        a3=10*3
+        m3.set(a3)
+    elif res3=="B":
+        a3=9*3
+        m3.set(a3)
+    elif res3=="C":
+        a3=8*3
+        m3.set(a3)
+    elif res3=="D":
+        a3=5*3
+        m3.set(a3)
+    else:
+        a3=0
+        m3.set(a3)
+        
+
+    
+    b=a+a1+a2+a3
+    m4.set(b)
+    c=(b/150)*100
+    m5.set(c)
+    
+
+
+Label(root,text="Name").grid(row=0)
+e1=Entry(root)
+e1.grid(row=0,column=1)
+
+Label(root,text="Reg.No").grid(row=0,column=4)
+e3=Entry(root)
+e3.grid(row=0,column=5)
+
+Label(root,text="RollNo").grid(row=1)
+e2=Entry(root)
+e2.grid(row=1,column=1)
+
+Label(root,text="Sr.No").grid(row=2)
+Label(root,text="Subject").grid(row=2,column=1)
+Label(root,text="Grade").grid(row=2,column=2)
+Label(root,text="Sub Credit").grid(row=2,column=3)
+Label(root,text="Credit Obtained").grid(row=2,column=4)
+Label(root,text="1").grid(row=3)
+Label(root,text="2").grid(row=4)
+Label(root,text="3").grid(row=5)
+Label(root,text="4").grid(row=6)
+Label(root,text="Maths").grid(row=3,column=1)
+Label(root,text="English").grid(row=4,column=1)
+Label(root,text="Science").grid(row=5,column=1)
+Label(root,text="CS").grid(row=6,column=1)
+
+e4=Entry(root)
+e4.grid(row=3,column=2)
+e5=Entry(root)
+e5.grid(row=4,column=2)
+e6=Entry(root)
+e6.grid(row=5,column=2)
+e7=Entry(root)
+e7.grid(row=6,column=2)
+
+Label(root,text="4").grid(row=3,column=3)
+Label(root,text="4").grid(row=4,column=3)
+Label(root,text="4").grid(row=5,column=3)
+Label(root,text="3").grid(row=6,column=3)
+Label(root,text="Total Credit").grid(row=7,column=3)
+Label(root,text="SGPA").grid(row=8,column=3)
+
+result=Label(root,text="",textvariable=m).grid(row=3,column=4)
+result1=Label(root,text="",textvariable=m1).grid(row=4,column=4)
+result2=Label(root,text="",textvariable=m2).grid(row=5,column=4)
+result3=Label(root,text="",textvariable=m3).grid(row=6,column=4)
+result4=Label(root,text="",textvariable=m4).grid(row=7,column=4)
+result5=Label(root,text="",textvariable=m5).grid(row=8,column=4)
+
+
+
+
+b1=Button(root,text="Submit",command=check)
+b1.grid(row=7,column=1)
+
+root.mainloop()
+
