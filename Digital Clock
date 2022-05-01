@@ -1,0 +1,17 @@
+from tkinter import *
+from tkinter.ttk import *
+from time import strftime 
+
+root=Tk()
+root.title("CLOCK!")
+
+def time():
+  string=strftime("%H:%M:%S:%p")
+  l.config(text=string)
+  l.after(5000,time)
+  
+l=Label(root,font=("calibri",10,"bold"),background="purple",foreground="white")
+l.pack(anchor="center")
+time()
+
+root.mainloop()
