@@ -1,0 +1,96 @@
+from tkinter import *
+from tkinter import messagebox
+def clearall():
+    entrymonth.delete(0,END)
+    entryday.delete(0,END)
+    entryyear.delete(0,END)
+    tentrymonth.delete(0,END)
+    tentryday.delete(0,END)
+    tentryyear.delete(0,END)
+    rentrymonth.delete(0,END)
+    rentryday.delete(0,END)
+    rentryyear.delete(0,END)
+    
+def checkerror():
+    if entrymonth.get == "" or entryday.get == " " or entryyear.get == " " or tentrymonth.get==" " or tentryday.get==" " or tentryyear.get==" " :
+        messagebox.showerror("Input Error")
+        clearall()
+        return 1
+    return 0
+    
+
+def calculate():
+    val=checkerror()
+    if val==1:
+        return
+    else:
+        bd=int(entryday.get())
+        bm=int(entrymonth.get())
+        by=int(entryyear.get())
+        gd=int(tentryday.get())
+        gm=int(tentrymonth.get())
+        gy=int(tentryyear.get())
+        month=[31,28,31,30,31,30,31,31,30,31,30,31]
+        if bd > gd :
+            gm-=1
+            gd=gd+month[bm-1]
+        if bm > gm :
+            gy-=1
+            gm+=12
+        rd=gd-bd
+        rm=gm-bm
+        ry=gy-by
+        rentryday.insert(10,str(rd))
+        rentrymonth.insert(10,str(rm))
+        rentryyear.insert(10,str(ry))
+    
+
+if __name__=="__main__":
+    root=Tk()
+    root.title("Age Calculator")
+    root.geometry("500x300")
+    dob=Label(root,text="Date of Birth")
+    td=Label(root,text="Today's Date")
+    day=Label(root,text="day")
+    month=Label(root,text="Month")
+    year=Label(root,text="Year")
+    tday=Label(root,text="day")
+    tmonth=Label(root,text="Month")
+    tyear=Label(root,text="Year")
+    rday=Label(root,text="day")
+    rmonth=Label(root,text="Month")
+    ryear=Label(root,text="Year")
+    calculate=Button(root,text="Calculate",command=calculate)
+    clear=Button(root,text="Clear All",command=clearall)
+    entrymonth=Entry(root)
+    entryday=Entry(root)
+    entryyear=Entry(root)
+    tentrymonth=Entry(root)
+    tentryday=Entry(root)
+    tentryyear=Entry(root)
+    rentrymonth=Entry(root)
+    rentryday=Entry(root)
+    rentryyear=Entry(root)
+    dob.grid(row=0,column=1)
+    day.grid(row=1,column=0)
+    entryday.grid(row=1,column=1)
+    month.grid(row=2,column=0)
+    entrymonth.grid(row=2,column=1)
+    year.grid(row=3,column=0)
+    entryyear.grid(row=3,column=1)
+    td.grid(row=0,column=4)
+    tday.grid(row=1,column=3)
+    tentryday.grid(row=1,column=4)
+    tmonth.grid(row=2,column=3)
+    tentrymonth.grid(row=2,column=4)
+    tyear.grid(row=3,column=3)
+    tentryyear.grid(row=3,column=4)
+    calculate.grid(row=4,column=2)
+    ryear.grid(row=5,column=2)
+    rentryyear.grid(row=6,column=2,pady=5)
+    rmonth.grid(row=7,column=2)
+    rentrymonth.grid(row=8,column=2,pady=5)
+    rday.grid(row=9,column=2)
+    rentryday.grid(row=10,column=2,pady=5)
+    clear.grid(row=12,column=2)
+    root.mainloop()
