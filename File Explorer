@@ -1,0 +1,23 @@
+from tkinter import *
+import os
+from tkinter import filedialog
+#from tkPDFViewer import tkPDFViewer as pdf 
+def browsefile():
+    filename=filedialog.askopenfilename(initialdir=os.getcwd(),title=" select file ",filetypes=(("Text file","*.txt*"),("pdf file","*.pdf*"),("All files","*.txt*")))
+    a.config(text="file opened"+filename)
+    #s=ShowPdf()
+    #t=s.ShowPdf()
+    #s.pdf_view(root,pdf_location=open(filename,"r"),width=80)
+    #s.pack(pady=0)
+def exit():
+    root.destroy()
+root=Tk()
+root.title("File Explorer")
+root.geometry("550x450")
+root.config(bg="cornsilk1")
+a=Label(root,text="File Explorer using Tkinter",width=100,height=4,fg="blue",bg="cornsilk1")
+a.grid(row=1,column=1)
+b1=Button(root,text="Browse File",command=browsefile).grid(row=2,column=1)
+b2=Button(root,text="Exit",command=exit).grid(row=3,column=1)
+
+root.mainloop()
