@@ -1,0 +1,43 @@
+from tkinter import *
+root=Tk()
+root.title("Calculator")
+root.geometry("450x350")
+
+def add():
+    res=int(e1.get())+int(e2.get())
+    m.set(res)
+
+def subtract():
+    res=int(e1.get())-int(e2.get())
+    m.set(res)
+    
+def multiply():
+    res=int(e1.get())*int(e2.get())
+    m.set(res)
+
+def divide():
+    res=int(e1.get())//int(e2.get())
+    m.set(res)
+
+m=StringVar()
+Label(root,text="First Number").grid(row=0)
+e1=Entry(root)
+e1.grid(row=0,column=1)
+Label(root,text="Second Number").grid(row=1)
+e2=Entry(root)
+e2.grid(row=1,column=1)
+Label(root,text="Result").grid(row=2)
+result=Label(root,text="",textvariable=m).grid(row=2,column=1)
+
+b1=Button(root,text="Add",command=add)
+b1.grid(row=3)
+b2=Button(root,text="Subtract",command=subtract)
+b2.grid(row=3,column=1)
+b3=Button(root,text="Multiply",command=multiply)
+b3.grid(row=4)
+b4=Button(root,text="Divide",command=divide)
+b4.grid(row=4,column=1)
+
+
+
+root.mainloop()
