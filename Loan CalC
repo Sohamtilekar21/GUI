@@ -1,0 +1,52 @@
+from tkinter import *
+root=Tk()
+root.title("Loan Calc")
+root.geometry("500x350")
+m=StringVar()
+m1=StringVar()
+m2=StringVar()
+def calc():
+    a=e1.get()
+    b=e2.get()
+    c=e3.get()
+    p=int(a)
+    r=int(b)
+    t=int(c)
+    amt=(p*(((100+r)/100))**t)
+    si=amt-p
+    x=si/12
+    m2.set(x)
+    m.set(amt)
+    m1.set(si)
+
+
+
+
+
+l=Label(root,text="Enter principal Amount : ")
+l.grid(row=1,column=1)
+e1=Entry(root)
+e1.grid(row=1,column=2)
+l2=Label(root,text="Enter Rate of interest : ")
+l2.grid(row=2,column=1)
+e2=Entry(root)
+e2.grid(row=2,column=2)
+l3=Label(root,text="Enter time in Years    : ")
+l3.grid(row=3,column=1)
+e3=Entry(root)
+e3.grid(row=3,column=2)
+b=Button(root,text="calculate",command=calc)
+b.grid(row=2,column=3)
+
+o=Label(root,text="Amount is :")
+o.grid(row=5,column=1)
+u=Label(root,text="",textvariable=m)
+u.grid(row=5,column=2)
+w=Label(root,text="Interest is :")
+w.grid(row=6,column=1)
+z=Label(root,text="",textvariable=m1)
+z.grid(row=6,column=2)
+Label(root,text="",textvariable=m2).grid(row=7,column=2)
+Label(root,text="Monthly interest is").grid(row=7,column=1)
+
+root.mainloop()
