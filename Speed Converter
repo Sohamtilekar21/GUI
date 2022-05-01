@@ -1,0 +1,29 @@
+from tkinter import *
+root=Tk()
+root.title("Speed Conv")
+root.geometry("450x350")
+
+def Convert1():
+    res=int(e1.get())
+    res=res/3.6
+    m.set(res)
+def Convert2():
+    res=int(e1.get())
+    res=res*3.6
+    m.set(res)
+
+m=StringVar()
+Label(root,text="Enter Speed").grid(row=0)
+e1=Entry(root)
+e1.grid(row=0,column=1)
+
+Label(root,text="Conversion").grid(row=2)
+result=Label(root,text="",textvariable=m).grid(row=2,column=1)
+
+b1=Button(root,text="Convert into m/s",command=Convert1)
+b1.grid(row=1,column=1)
+b1=Button(root,text="Convert into km/hr",command=Convert2)
+b1.grid(row=1)
+
+
+root.mainloop()
