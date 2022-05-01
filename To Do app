@@ -1,0 +1,65 @@
+from tkinter import *
+from tkinter import messagebox
+tasklist=[]
+counter=1
+
+def inputerror():
+  if(entertaskfield.get()==""):
+    messagebox.showerror("Input Error!")
+    return 0
+  return 1 
+def cleartasknumberfield():
+  tasknumberfield.delete(0.0,END)
+def cleartaskfield():
+  entertaskfield.delete(0,END)
+def inserttask():
+  global counter 
+  value=inputerror()
+  if value==0:
+    return
+  content=entertaskfield.get()+"\n"
+  tasklist.append(content)
+  textarea.insert("end -1 chars","["+str(counter)+"]"+content)
+  counter+=1
+  cleartaskfield()
+
+def delete():
+  global counter
+  if(len(tasklist)==0):
+    messagebox.showerror("No Task!")
+    return 
+  number=tasknumberfield.get(1.0,END)
+  if number=="\n":
+    messagebox.showerror("Input Error!")
+    return 
+  else:
+    taskno=int(number)
+  cleartasknumberfield()
+  tasklist.pop(taskno-1)
+  counter-=1
+  textarea.delete(1.0,END)
+  for i in range(len(tasklist)):
+    textarea.insert("end -1 chars","["+str(i+1)+"]"+tasklist[i])
+
+if __name__=="__main__":
+  gui=Tk()
+  gui.configure(background="light green")
+  gui.title("To Do Application!")
+  gui.geometry("450x300")
+  entertask=Label(gui,text="Enter your task",bg="light green")
+  entertaskfield=Entry(gui)
+  submit=Button(gui,text="Submit",fg="red",command=inserttask)
+  textarea=Text(gui,height=5,width=20,font="verdana 13")
+  tasknumber=Label(gui,text="Delete the task number",bg="blue")
+  tasknumberfield=Text(gui,height=1,width=2,font="verdana 13")
+  delete=Button(gui,text="Delete",fg="black",bg="red",command=delete)
+  exit=Button(gui,text="Exit",fg="black",bg="red",command=exit)
+  entertask.grid(row=0,column=1)
+  entertaskfield.grid(row=1,column=2,ipadx=50)
+  submit.grid(row=2,column=2)
+  textarea.grid(row=3,column=2,padx=10,sticky=W)
+  tasknumber.grid(row=4,column=2,pady=5)
+  tasknumberfield.grid(row=5,column=2)
+  delete.grid(row=6,column=2,pady=5)
+  exit.grid(row=7,column=2)
+  gui.mainloop()
